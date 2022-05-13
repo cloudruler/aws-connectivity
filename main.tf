@@ -23,6 +23,7 @@ resource "aws_vpc_ipam_pool" "region_ipam_pool" {
   address_family = "ipv4"
   ipam_scope_id  = aws_vpc_ipam.ipam.private_default_scope_id
   source_ipam_pool_id = aws_vpc_ipam_pool.aws_ipam_pool.id
+  locale = data.aws_region.current.name
 }
 
 resource "aws_vpc_ipam_pool_cidr" "region_pool_cidr" {
@@ -34,6 +35,7 @@ resource "aws_vpc_ipam_pool" "region_nonprod_ipam_pool" {
   address_family = "ipv4"
   ipam_scope_id  = aws_vpc_ipam.ipam.private_default_scope_id
   source_ipam_pool_id = aws_vpc_ipam_pool.region_ipam_pool.id
+  locale = data.aws_region.current.name
 }
 
 resource "aws_vpc_ipam_pool_cidr" "region_nonprod_pool_cidr" {
@@ -45,6 +47,7 @@ resource "aws_vpc_ipam_pool" "region_prod_ipam_pool" {
   address_family = "ipv4"
   ipam_scope_id  = aws_vpc_ipam.ipam.private_default_scope_id
   source_ipam_pool_id = aws_vpc_ipam_pool.region_ipam_pool.id
+  locale = data.aws_region.current.name
 }
 
 resource "aws_vpc_ipam_pool_cidr" "region_prod_pool_cidr" {
