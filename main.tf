@@ -36,6 +36,10 @@ resource "aws_vpc_ipam_pool" "region_nonprod_ipam_pool" {
   ipam_scope_id  = aws_vpc_ipam.ipam.private_default_scope_id
   source_ipam_pool_id = aws_vpc_ipam_pool.region_ipam_pool.id
   locale = data.aws_region.current.name
+  description = "${data.aws_region.current.name} non-prod"
+  tags = {
+    "environment" = "nonprod"
+  }
 }
 
 resource "aws_vpc_ipam_pool_cidr" "region_nonprod_pool_cidr" {
@@ -48,6 +52,10 @@ resource "aws_vpc_ipam_pool" "region_prod_ipam_pool" {
   ipam_scope_id  = aws_vpc_ipam.ipam.private_default_scope_id
   source_ipam_pool_id = aws_vpc_ipam_pool.region_ipam_pool.id
   locale = data.aws_region.current.name
+  description = "${data.aws_region.current.name} prod"
+  tags = {
+    "environment" = "prod"
+  }
 }
 
 resource "aws_vpc_ipam_pool_cidr" "region_prod_pool_cidr" {
